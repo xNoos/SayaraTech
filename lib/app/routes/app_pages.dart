@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/add-car/bindings/add_car_binding.dart';
 import '../modules/add-car/views/add_car_view.dart';
-import '../modules/edit-car/bindings/edit_car_binding.dart';
-import '../modules/edit-car/views/edit_car_view.dart';
+import '../modules/bookings/bindings/bookings_binding.dart';
+import '../modules/bookings/views/bookings_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -18,8 +18,6 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
-import '../modules/view-car/bindings/view_car_binding.dart';
-import '../modules/view-car/views/view_car_view.dart';
 
 part 'app_routes.dart';
 
@@ -36,6 +34,7 @@ class AppPages {
   static const EDIT_CAR = Routes.EDIT_CAR;
   static const ADD_CAR = Routes.ADD_CAR;
   static const OTP = Routes.OTP;
+  static const BOOKINGS = Routes.BOOKINGS;
 
   static final routes = [
     GetPage(
@@ -69,16 +68,6 @@ class AppPages {
       binding: MyCarsBinding(),
     ),
     GetPage(
-      name: _Paths.VIEW_CAR,
-      page: () => const ViewCarView(),
-      binding: ViewCarBinding(),
-    ),
-    GetPage(
-      name: _Paths.EDIT_CAR,
-      page: () => const EditCarView(),
-      binding: EditCarBinding(),
-    ),
-    GetPage(
       name: _Paths.ADD_CAR,
       page: () => const AddCarView(),
       binding: AddCarBinding(),
@@ -87,6 +76,11 @@ class AppPages {
       name: _Paths.OTP,
       page: () => const OtpView(),
       binding: OtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOOKINGS,
+      page: () => const BookingsView(),
+      binding: BookingsBinding(),
     ),
   ];
 }

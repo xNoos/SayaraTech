@@ -13,8 +13,8 @@ class SignupController extends GetxController {
   TextEditingController mobileContoller = TextEditingController();
   TextEditingController nameContoller = TextEditingController();
   TextEditingController emailContoller = TextEditingController();
-
-  login() async {
+  RxBool loading = false.obs;
+  signup() async {
     bool isValid =
         await PhoneNumberUtil().validate('+966${mobileContoller.text}');
     if (mobileContoller.text.trim().isEmpty) {
@@ -36,6 +36,7 @@ class SignupController extends GetxController {
       Get.showSnackbar(
           Alert.ErrorSnackBar(message: "Your email is not correct".tr));
     } else {
+      loading.value = true;
       Map body = {
         "name": nameContoller.text,
         "email": emailContoller.text,
@@ -60,6 +61,7 @@ class SignupController extends GetxController {
             message:
                 result['error'] != "" ? result['error'] : result['message']));
       }
+      loading.value = false;
     }
   }
 }

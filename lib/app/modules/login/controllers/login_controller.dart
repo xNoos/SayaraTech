@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:phone_number/phone_number.dart';
@@ -10,7 +11,7 @@ import '../../../service/translation_service.dart';
 
 class LoginController extends GetxController {
   TextEditingController mobileContoller = TextEditingController();
-
+  RxBool loading = false.obs;
   RxString locale =
       RxString(Get.find<TranslationService>().getLocale().languageCode);
   login() async {
@@ -23,10 +24,12 @@ class LoginController extends GetxController {
       Get.showSnackbar(Alert.ErrorSnackBar(
           message: "The entered mobile number is incorrect".tr));
     } else {
+      loading.value = true;
       final response = await http.post(
           Uri.parse(
               '${Database.serverUrl}${Database.login}?mobileno=966${mobileContoller.text}'),
           headers: Database.header);
+      log(response.statusCode.toString());
       final result = await jsonDecode(response.body);
       if (result['status']) {
         Get.toNamed(AppPages.OTP, arguments: {
@@ -40,6 +43,7 @@ class LoginController extends GetxController {
             message:
                 result['error'] != "" ? result['error'] : result['message']));
       }
+      loading.value = false;
     }
   }
 }

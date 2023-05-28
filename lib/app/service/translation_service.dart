@@ -5,7 +5,7 @@ class TranslationService {
   Locale getLocale() {
     String? locale = GetStorage().read<String>('language');
     if (locale == null || locale.isEmpty) {
-      locale = "en";
+      locale = "ar";
     }
     return Locale(locale);
   }

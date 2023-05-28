@@ -13,6 +13,7 @@ abstract class Routes {
   static const EDIT_CAR = _Paths.EDIT_CAR;
   static const ADD_CAR = _Paths.ADD_CAR;
   static const OTP = _Paths.OTP;
+  static const BOOKINGS = _Paths.BOOKINGS;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const EDIT_CAR = '/edit-car';
   static const ADD_CAR = '/add-car';
   static const OTP = '/otp';
+  static const BOOKINGS = '/bookings';
 }

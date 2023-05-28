@@ -51,8 +51,8 @@ class OtpController extends GetxController {
       final result = await jsonDecode(response.body);
       if (result['status']) {
         data['id_step2'] = result['Data']["id_step2"];
-        Get.showSnackbar(
-            Alert.SuccessSnackBar(message: "Code hase been sent successfully"));
+        Get.showSnackbar(Alert.SuccessSnackBar(
+            message: "Code hase been sent successfully".tr));
       } else {
         Get.showSnackbar(Alert.ErrorSnackBar(
             message:
@@ -67,8 +67,8 @@ class OtpController extends GetxController {
       log(result.toString());
       if (result['status']) {
         data['id_step2'] = result['Data']["id_step2"];
-        Get.showSnackbar(
-            Alert.SuccessSnackBar(message: "Code hase been sent successfully"));
+        Get.showSnackbar(Alert.SuccessSnackBar(
+            message: "Code hase been sent successfully".tr));
       } else {
         Get.showSnackbar(Alert.ErrorSnackBar(
             message:

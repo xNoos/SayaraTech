@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:get/get.dart';
-import '../../../routes/app_pages.dart';
 import '../../../service/app_colors.dart';
 import '../../../service/app_images.dart';
 import '../controllers/otp_controller.dart';
@@ -34,6 +33,7 @@ class OtpView extends GetView<OtpController> {
                 ).marginOnly(top: 20),
                 Center(
                   child: Text(
+                    textDirection: TextDirection.ltr,
                     "+966 ${controller.data['mobile']}",
                   ),
                 ).marginOnly(top: 10),
@@ -96,7 +96,7 @@ class OtpView extends GetView<OtpController> {
                       }),
                     ],
                   ),
-                ).marginOnly(top: 50)
+                ).marginOnly(top: 50, bottom: 30)
               ],
             )));
   }

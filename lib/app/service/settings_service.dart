@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,15 +8,23 @@ import 'package:sayaratech/app/service/translation_service.dart';
 
 class SettingsService {
   ThemeData getLightTheme() {
+    log(Get.find<TranslationService>().getLocale().languageCode);
     return ThemeData(
-        primaryColor: Colors.white,
+        primaryColor: AppColors.greyColor,
         useMaterial3: true,
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-            elevation: 0, foregroundColor: Colors.white),
         brightness: Brightness.light,
         dividerColor: AppColors.secondColor,
         focusColor: AppColors.secondColor,
         hintColor: AppColors.secondColor,
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedIconTheme: IconThemeData(color: AppColors.primaryColor),
+            unselectedIconTheme:
+                IconThemeData(color: AppColors.greyColor.withOpacity(.5)),
+            unselectedItemColor: AppColors.greyColor.withOpacity(.5),
+            selectedItemColor: AppColors.primaryColor,
+            elevation: 0,
+            selectedLabelStyle: const TextStyle(height: 2),
+            showUnselectedLabels: true),
         textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
                 backgroundColor: AppColors.primaryColor,
@@ -36,9 +46,10 @@ class SettingsService {
                 borderSide: BorderSide.none)),
         iconTheme: IconThemeData(color: AppColors.secondColor),
         textTheme: GoogleFonts.getTextTheme(
-          Get.find<TranslationService>().getLocale().languageCode == "en"
-              ? 'Poppins'
-              : 'Cairo',
+          // Get.find<TranslationService>().getLocale().languageCode == "en"
+          //     ? 'Poppins'
+          //     : 'Cairo',
+          'Cairo',
           TextTheme(
             titleLarge: TextStyle(
                 fontSize: 15.0,
